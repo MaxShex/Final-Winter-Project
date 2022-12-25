@@ -1,8 +1,22 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class SceneLoader : MonoBehaviour
 {
-    public void Next() =>
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+    [SerializeField] GameObject prologPanel;
+    [SerializeField] PlayerInput playerInput;
+
+    private void Start()
+    {
+        playerInput.DeactivateInput();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            prologPanel.SetActive(false);
+            playerInput.ActivateInput();
+        }
+    }
 }
