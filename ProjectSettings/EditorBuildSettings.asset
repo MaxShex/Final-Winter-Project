@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Prolog.unity
+    guid: ca614f26b5d05e24cb737070374faf57
+  - enabled: 1
+    path: Assets/Scenes/City.unity
+    guid: ed3dbb190e0b97748b4e091a619774b4
   m_configObjects: {}
