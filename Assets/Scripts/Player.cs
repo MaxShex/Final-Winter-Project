@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
         InputZone.OnDropDown += DropDown;
         OutputZone.OnDescriptionShow += ViewDescription;
         InputZone.OnDescriptionShow += ViewDescription;
+        Sign.OnDescriptionShow += ViewDescription;
         input = GetComponent<PlayerInput>();
     }
 
@@ -34,9 +35,7 @@ public class Player : MonoBehaviour
     {
         inventory.SetActive(true);
         WhichHouse = houseNum;
-        descriptionPanel.GetDescriptionPanel.SetActive(true);
         IsInventoryEmpty = false;
-        input.DeactivateInput();
     }
 
     public void DropDown()
@@ -45,13 +44,13 @@ public class Player : MonoBehaviour
         IsInventoryEmpty = true;
         counterText.text = $"{deliveryCount}";
         inventory.SetActive(false);
-        descriptionPanel.GetDescriptionPanel.SetActive(true);
-        input.DeactivateInput();
     }
 
     public void ViewDescription(ItemData itemData)
     {
+        descriptionPanel.GetDescriptionPanel.SetActive(true);
         descriptionPanel.GetNameText.text = itemData.name;
         descriptionPanel.GetDescriptionText.text = itemData.description;
+        input.DeactivateInput();
     }
 }
