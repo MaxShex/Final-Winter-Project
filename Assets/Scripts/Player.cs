@@ -10,10 +10,10 @@ public class Player : MonoBehaviour
     [SerializeField] DescriptionPanel descriptionPanel;
 
     public bool IsInventoryEmpty { get; private set; }
+    public int WhichHouse { get; private set; }
 
     private int deliveryCount;
     private PlayerInput input;
-
 
     void Start()
     {
@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
         OutputZone.OnPickUp += PickUp;
         InputZone.OnDropDown += DropDown;
         OutputZone.OnDescriptionShow += ViewDescription;
+        InputZone.OnDescriptionShow += ViewDescription;
         input = GetComponent<PlayerInput>();
     }
 
@@ -29,9 +30,10 @@ public class Player : MonoBehaviour
         
     }
 
-    public void PickUp()
+    public void PickUp(int houseNum)
     {
         inventory.SetActive(true);
+        WhichHouse = houseNum;
         descriptionPanel.GetDescriptionPanel.SetActive(true);
         IsInventoryEmpty = false;
         input.DeactivateInput();
@@ -43,6 +45,8 @@ public class Player : MonoBehaviour
         IsInventoryEmpty = true;
         counterText.text = $"{deliveryCount}";
         inventory.SetActive(false);
+        descriptionPanel.GetDescriptionPanel.SetActive(true);
+        input.DeactivateInput();
     }
 
     public void ViewDescription(ItemData itemData)

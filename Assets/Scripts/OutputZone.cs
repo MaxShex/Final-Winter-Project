@@ -1,12 +1,11 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class OutputZone : MonoBehaviour
 {
-    public static Action OnPickUp;
+    public static Action<int> OnPickUp;
     public static Action<ItemData> OnDescriptionShow;
 
     private List<GameObject> objects;
@@ -30,7 +29,7 @@ public class OutputZone : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (counter < objects.Count)
+        if (counter < objects.Count && IsInventoryEmpty)
             objects[counter].GetComponent<Outline>().OutlineWidth = 3;
         if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.E))
         {
@@ -38,7 +37,7 @@ public class OutputZone : MonoBehaviour
             {
                 if (counter < objects.Count)
                 {
-                    OnPickUp?.Invoke();
+                    OnPickUp?.Invoke(objects[counter].GetComponent<Item>().GetItemData.houseNum);
                     IsInventoryEmpty = false;
                     OnDescriptionShow?.Invoke(objects[counter].GetComponent<Item>().GetItemData);
                     objects[counter].SetActive(false);
