@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc8d8f5b34e24040a2156989bc1a64f, type: 3}
   m_Name: ItemData2 3
   m_EditorClassIdentifier: 
-  name: Box
-  description: ok 8
+  name: "\u0417\u0430\u043A\u0430\u0437 - 8"
+  description: "\u042F - *\u0441\u0442\u0443\u043A*... *\u0441\u0442\u0443\u043A*...
+    *\u0441\u0442\u0443\u043A* \u042F - \u042D\u0445 \u0431\u043B\u0438\u043D \u043F\u0440\u044F\u043C
+    \u043A\u0430\u043A \u0432 \u0448\u043A\u043E\u043B\u0435 \u043A\u043E\u0441\u044F\u043A
+    \u043D\u0430 \u043A\u043E\u0441\u044F\u043A\u0435."
   houseNum: 8
